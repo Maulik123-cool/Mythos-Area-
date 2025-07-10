@@ -43,20 +43,17 @@ function updateStatus(text) {
 attackBtn.onclick = () => {
   if (playerHP <= 0 || enemyHP <= 0) return;
 
-  // Player attacks
   const playerDmg = random(creatures[player].attack);
   enemyHP -= playerDmg;
 
   let battleText = `${player} hits ${enemy} for ${playerDmg} damage!`;
 
-  // Enemy attacks
   if (enemyHP > 0) {
     const enemyDmg = random(creatures[enemy].attack);
     playerHP -= enemyDmg;
     battleText += `\n${enemy} counters with ${enemyDmg} damage!`;
   }
 
-  // Check for win/lose
   if (playerHP <= 0 && enemyHP <= 0) {
     updateStatus(`${battleText}\nIt's a draw!`);
     attackBtn.disabled = true;
